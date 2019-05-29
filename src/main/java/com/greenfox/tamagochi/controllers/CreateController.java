@@ -1,6 +1,6 @@
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.FoxService;
+import com.greenfox.tamagochi.Service.FoxServiceImpl;
 import com.greenfox.tamagochi.model.Fox;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,15 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.xml.stream.events.Attribute;
-import java.util.jar.Attributes;
-
 @Controller
 public class CreateController {
 
-  private FoxService foxService;
+  private FoxServiceImpl foxService;
 
-  public CreateController(FoxService foxService) {
+  public CreateController(FoxServiceImpl foxService) {
     this.foxService = foxService;
   }
 

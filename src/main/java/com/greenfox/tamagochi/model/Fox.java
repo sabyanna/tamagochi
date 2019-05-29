@@ -1,11 +1,18 @@
 package com.greenfox.tamagochi.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Fox {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
   private String name;
   private String gender;
   private List<String> tricks;

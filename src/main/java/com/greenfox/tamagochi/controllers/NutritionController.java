@@ -1,22 +1,18 @@
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.FoxService;
-import com.greenfox.tamagochi.model.Fox;
+import com.greenfox.tamagochi.Service.FoxServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.xml.stream.events.Attribute;
-import java.util.jar.Attributes;
-
 @Controller
 public class NutritionController {
 
-  private FoxService foxService;
+  private FoxServiceImpl foxService;
 
-  public NutritionController(FoxService foxService) {
+  public NutritionController(FoxServiceImpl foxService) {
     this.foxService = foxService;
   }
 

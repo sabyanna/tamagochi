@@ -1,6 +1,7 @@
 package com.greenfox.tamagochi.Service;
 
 import com.greenfox.tamagochi.model.Fox;
+import com.greenfox.tamagochi.repository.IFoxRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,7 +9,14 @@ import java.util.List;
 import java.util.Random;
 
 @Service
-public class FoxService {
+public class FoxServiceImpl implements IFoxService {
+
+  private IFoxRepository foxRepository;
+
+  public FoxServiceImpl(IFoxRepository foxRepository) {
+    this.foxRepository = foxRepository;
+  }
+
   List<Fox> foxes;
   ArrayList<String> colors;
   ArrayList<String> log = new ArrayList<>();
@@ -16,7 +24,7 @@ public class FoxService {
   //ArrayList<String> tricks;
 
 
-  public FoxService() {
+  public FoxServiceImpl() {
     colors = new ArrayList<>();
     colors.add("red");
     colors.add("blue");
@@ -75,5 +83,27 @@ public class FoxService {
 
   public void setCurrentFox(String currentFox) {
     this.currentFox = currentFox;
+  }
+
+  @Override
+  public List<Fox> findAll() {
+    List<Fox> foxList = new ArrayList<>();
+    foxRepository.findAll().forEach(foxList::add);
+    return foxList;
+  }
+
+  @Override
+  public Fox findById(long id) {
+    return foxRepository.findById(id).orElse(null);
+  }
+
+  @Override
+  public void save(Fox fox) {
+    foxRepository.save(fox);
+  }
+
+  @Override
+  public void delete(long id) {
+    foxRepository.deleteById(id);
   }
 }
