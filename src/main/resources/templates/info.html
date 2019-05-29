@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>FoxClub</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="icon" href="/black.png">
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div th:replace="template :: header" class="container clearfix" >
+        </div>
+    </header>
+
+    <div th:if="${isalive}" class="box">
+        <img th:src="${color}" alt="logo" class="logo">
+        <p th:text="${text}"></p>
+
+        <h2>Fullness: </h2><p th:text="${fulltext}"></p>
+
+        <h1 th:text="${trickText} ? 'No tricks :(' : 'Tricks:'" ></h1>
+
+        <ul>
+            <li th:each="trick : ${tricks}"
+                th:text="${trick}"></li>
+        </ul>
+    </div>
+
+    <div th:unless="${isalive}" class="box">
+        <img th:src="${colordead}" alt="logo" class="logo">
+        <h1>Your fox is dead :(</h1>
+    </div>
+
+
+
+</body>
+</html>
+
+<!-- <img src="../static/greenfox.png" alt="logo" class="logo"> -->
+
+

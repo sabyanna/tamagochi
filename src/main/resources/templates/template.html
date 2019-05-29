@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FoxClub</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <link rel="icon" href="/black.png">
+    <meta charset="utf-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <div th:fragment="header" class="container clearfix">
+        <a href="/">
+            <img src="/greenfoxlogo.png" alt="logo" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a th:href="@{/login(name= ${foxName})}">Login</a></li>
+                <li><a th:href="@{/create(name= ${foxName})}">Create</a></li>
+                <li><a th:href="@{/actions(name= ${foxName})}">Actions</a></li>
+                <li th:if="${foxTest}"><a th:href="@{/nutrition(name= ${foxName})}">Food</a></li>
+                <li th:if="${foxTest}"><a th:href="@{/learn(name= ${foxName})}">Trick Center</a></li>
+                <li th:if="${foxTest}"><a th:href="@{/info(name= ${foxName})}" th:text="${foxName}" ></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+</body>
+</html>

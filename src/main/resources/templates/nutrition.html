@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FoxClub</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="icon" href="/black.png">
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div th:replace="template :: header" class="container clearfix" >
+    </div>
+</header>
+<div class="box">
+    <h1>What should your fox eat?</h1>
+    <form  th:action="@{/nutrition}" th:method="post">
+        <input name = "name" th:value="${foxName}" th:type="hidden">
+        <label  th:text="${foodTitle}"></label>
+        <select name ="food" th:type="text">
+            <option th:each="food : ${foods}"
+                    th:value="${food}"
+                    th:text="${food}"
+            ></option>
+        </select>
+
+        <label th:text="${drinkTitle}"></label>
+        <select name ="drink" th:type="text">
+            <option th:each="drink : ${drinks}"
+                    th:value="${drink}"
+                    th:text="${drink}">
+            </option>
+        </select>
+        <button type="submit">EAT!</button>
+    </form>
+</div>
+</body>
+</html>
+
+

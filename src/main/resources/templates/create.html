@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FoxClub</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="icon" href="/black.png">
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div th:replace="template :: header" class="container clearfix" >
+    </div>
+</header>
+<div class="box">
+    <h1 th:text="${title}"></h1>
+    <form th:action="@{/create}" th:method="post">
+
+        <label for="name">The name of your Fox</label>
+        <input id='name' name='name' type='text' autofocus/>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name='gender'>
+            <option th:value="She">girl</option>
+            <option th:value="He">boy</option>
+        </select>
+
+        <label>Shoe color</label>
+        <select name ="color" th:type="text">
+            <option th:each="color : ${colors}"
+                    th:value="${color}"
+                    th:text="${color}"
+            ></option>
+        </select>
+        <button type="submit">GO</button>
+    </form>
+</div>
+</body>
+</html>
+
+<!-- <img src="../static/greenfox.png" alt="logo" class="logo"> -->
+
+
