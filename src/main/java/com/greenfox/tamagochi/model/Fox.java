@@ -25,6 +25,7 @@ public class Fox {
   private int fullness;
   private boolean isAlive;
 
+  public Fox() {}
 
   public Fox(String name, String gender, String color) {
     tricks = new ArrayList<>();
@@ -118,6 +119,8 @@ public class Fox {
     this.gender = gender;
   }
 
+  /*
+
   public String describe() {
     if (tricks.size() == 0) {
       return "This is " + getName() + ". " + "Currently living on " + eats + " and " + drinks + ". " + gender + " knows no tricks yet.";
@@ -125,6 +128,8 @@ public class Fox {
       return "This is " + getName() + ". " + "Currently living on " + eats + " and " + drinks + ". " + gender + " knows " + tricks.size() + " tricks.";
     }
   }
+
+   */
 
   public String getColor() {
     return color;
@@ -182,7 +187,12 @@ public class Fox {
     isAlive = alive;
   }
 
+/*
   public void feed() {
     fullness = 10;
   }
+
+ */
+
+
 }

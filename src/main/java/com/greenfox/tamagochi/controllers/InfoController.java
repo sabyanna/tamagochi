@@ -21,7 +21,8 @@ public class InfoController {
     model.addAttribute("foxName", name);
     model.addAttribute("color", "/" + foxService.getFoxByName(name).getColor() + ".png");
     model.addAttribute("colordead", "/" + foxService.getFoxByName(name).getColor() + "-dead.png");
-    model.addAttribute("text", foxService.getFoxByName(name).describe());
+    model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
+    //model.addAttribute("text", foxService.getFoxByName(name).describe());
     model.addAttribute("trickText", foxService.getFoxByName(name).getTricks().size() == 0);
     model.addAttribute("tricks", foxService.getFoxByName(name).getTricks());
     model.addAttribute("fulltext", foxService.getFoxByName(name).getFullness());

@@ -32,10 +32,12 @@ public class NutritionController {
   public String Nutrition(String name, Model model, String food, String drink) {
     foxService.getFoxByName(name).setEats(food);
     foxService.getFoxByName(name).setDrinks(drink);
-    foxService.getFoxByName(name).feed();
+    foxService.feed(foxService.getFoxByName(name));
+    //foxService.feed(getFoxByName(name));
     model.addAttribute("foxTest", foxService.getFoxes().size() != 0);
     model.addAttribute("foxName", name);
-    model.addAttribute("text", foxService.getFoxByName(name).describe());
+    model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
+    //model.addAttribute("text", foxService.getFoxByName(name).describe());
     model.addAttribute("trickText", "Known tricks");
     model.addAttribute("tricks", foxService.getFoxByName(name).getTricks());
     model.addAttribute("fulltext", foxService.getFoxByName(name).getFullness());

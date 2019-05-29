@@ -31,7 +31,8 @@ public class LearnController {
     foxService.getFoxByName(name).addToTricks(trick);
     model.addAttribute("foxTest", foxService.getFoxes().size() != 0);
     model.addAttribute("trickText", "Known tricks");
-    model.addAttribute("text", foxService.getFoxByName(name).describe());
+    model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
+    //model.addAttribute("text", foxService.getFoxByName(name).describe());
     model.addAttribute("tricks", foxService.getFoxByName(name).getTricks());
     model.addAttribute("fulltext", foxService.getFoxByName(name).getFullness());
     foxService.addLog("Trick learned");

@@ -85,6 +85,18 @@ public class FoxServiceImpl implements IFoxService {
     this.currentFox = currentFox;
   }
 
+  public void feed(Fox fox) {
+    fox.setFullness(10);
+  }
+
+  public String describe(Fox fox) {
+    if (fox.getTricks().size() == 0) {
+      return "This is " + fox.getName() + ". " + "Currently living on " + fox.getEats() + " and " + fox.getDrinks() + ". " + fox.getGender() + " knows no tricks yet.";
+    } else {
+      return "This is " + fox.getName() + ". " + "Currently living on " + fox.getEats() + " and " + fox.getDrinks() + ". " + fox.getGender() + " knows " + fox.getTricks().size() + " tricks.";
+    }
+  }
+
   @Override
   public List<Fox> findAll() {
     List<Fox> foxList = new ArrayList<>();
