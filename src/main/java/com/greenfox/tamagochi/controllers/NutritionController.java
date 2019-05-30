@@ -20,9 +20,9 @@ public class NutritionController {
   public String Nutrition(@RequestParam(required = false) String name, Model model) {
     model.addAttribute("foxTest", foxService.getFoxes().size() != 0);
     model.addAttribute("foxName", name);
-    model.addAttribute("currentDrink", foxService.getFoxByName(name).getDrinks());
-    model.addAttribute("foods", foxService.getFoxByName(name).getPossibleEats());
-    model.addAttribute("drinks", foxService.getFoxByName(name).getPossibleDrinks());
+    //model.addAttribute("currentDrink", foxService.getFoxByName(name).getDrinks());
+    //model.addAttribute("foods", foxService.getFoxByName(name).getPossibleEats());
+    //model.addAttribute("drinks", foxService.getFoxByName(name).getPossibleDrinks());
     model.addAttribute("foodTitle", "What to eat?");
     model.addAttribute("drinkTitle", "What to drink?");
     return "nutrition";
@@ -30,16 +30,16 @@ public class NutritionController {
 
   @PostMapping("/nutrition")
   public String Nutrition(String name, Model model, String food, String drink) {
-    foxService.getFoxByName(name).setEats(food);
-    foxService.getFoxByName(name).setDrinks(drink);
+    //foxService.getFoxByName(name).setEats(food);
+    //foxService.getFoxByName(name).setDrinks(drink);
     foxService.feed(foxService.getFoxByName(name));
     //foxService.feed(getFoxByName(name));
     model.addAttribute("foxTest", foxService.getFoxes().size() != 0);
     model.addAttribute("foxName", name);
-    model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
+    //model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
     //model.addAttribute("text", foxService.getFoxByName(name).describe());
     model.addAttribute("trickText", "Known tricks");
-    model.addAttribute("tricks", foxService.getFoxByName(name).getTricks());
+    //model.addAttribute("tricks", foxService.getFoxByName(name).getTricks());
     model.addAttribute("fulltext", foxService.getFoxByName(name).getFullness());
     //model.addAttribute("name", foxService.getFoxByName(currentFox).getFullness());
     foxService.addLog("Fox fed");

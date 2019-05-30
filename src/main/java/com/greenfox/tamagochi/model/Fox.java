@@ -11,48 +11,21 @@ import java.util.List;
 public class Fox {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
   private String gender;
-  private List<String> tricks;
-  private String eats;
-  private String drinks;
   private String color;
-  private List<String> possibleTricks;
-  private List<String> possibleEats;
-  private List<String> possibleDrinks;
   private int fullness;
   private boolean isAlive;
+  //private Food eats;
+  //private Drink drinks;
 
   public Fox() {}
 
   public Fox(String name, String gender, String color) {
-    tricks = new ArrayList<>();
-    possibleTricks = new ArrayList<>();
-    possibleEats = new ArrayList<>();
-    possibleDrinks = new ArrayList<>();
-    possibleTricks.add("play");
-    possibleTricks.add("inject dependencies");
-    possibleTricks.add("paint");
-    possibleTricks.add("snore");
-    possibleTricks.add("handstand");
-    possibleTricks.add("cook");
-    possibleTricks.add("sleep");
-    possibleEats.add("dry bread");
-    possibleEats.add("watermelon");
-    possibleEats.add("cake");
-    possibleEats.add("pizza");
-    possibleDrinks.add("water");
-    possibleDrinks.add("lemonade");
-    possibleDrinks.add("wine");
-    possibleDrinks.add("milkshake");
     this.name = name;
     this.gender = gender;
-    //this.eats = eats;
-    eats = "dry bread";
-    drinks = "water";
-    //this.drinks = drinks;
     this.color = color;
     fullness = 10;
     isAlive = true;
@@ -66,13 +39,17 @@ public class Fox {
     this.name = name;
   }
 
+  /*
   public List<String> getTricks() {
     return tricks;
   }
 
+   */
+
   public void setTricks(List<String> tricks) {
     tricks = tricks;
   }
+  /*
 
   public void addToTricks(String trick) {
     tricks.add(trick);
@@ -83,10 +60,17 @@ public class Fox {
     }
   }
 
+   */
+
+  /*
+
   public String getEats() {
     return eats;
   }
 
+   */
+
+/*
   public void setEats(String newEats) {
     possibleEats.remove(newEats);
     List<String> outputList = new ArrayList<>();
@@ -97,9 +81,17 @@ public class Fox {
     eats = newEats;
   }
 
+ */
+
+/*
+
   public String getDrinks() {
     return drinks;
   }
+
+ */
+
+/*
 
   public void setDrinks(String newDrinks) {
     possibleDrinks.remove(newDrinks);
@@ -110,6 +102,8 @@ public class Fox {
     possibleDrinks = outputList;
     drinks = newDrinks;
   }
+
+ */
 
   public String getGender() {
     return gender;
@@ -138,6 +132,8 @@ public class Fox {
   public void setColor(String color) {
     this.color = color;
   }
+
+  /*
 
   public void learnTrick(String trick) {
     tricks.add(trick);
@@ -170,6 +166,8 @@ public class Fox {
   public void setPossibleDrinks(List<String> possibleDrinks) {
     this.possibleDrinks = possibleDrinks;
   }
+
+   */
 
   public int getFullness() {
     return fullness;

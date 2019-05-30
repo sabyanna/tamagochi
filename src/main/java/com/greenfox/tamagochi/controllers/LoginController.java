@@ -28,7 +28,7 @@ public class LoginController {
   public String LoggedIn(Model model, String name) {
     if (foxService.isThereFox(name)) {
       //currentFox = name;
-      model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
+      //model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
       //model.addAttribute("text", foxService.getFoxByName(name).describe());
       model.addAttribute("fulltext", foxService.getFoxByName(name).getFullness());
       foxService.addLog("Logged in");
