@@ -5,6 +5,7 @@ import com.greenfox.tamagochi.Service.FoodService;
 import com.greenfox.tamagochi.Service.TrickService;
 import com.greenfox.tamagochi.model.Drink;
 import com.greenfox.tamagochi.model.Food;
+import com.greenfox.tamagochi.model.Trick;
 import com.greenfox.tamagochi.repository.IDrinkRepository;
 import com.greenfox.tamagochi.repository.IFoodRepository;
 import com.greenfox.tamagochi.repository.IFoxRepository;
@@ -53,5 +54,6 @@ public class TamagochiApplication implements CommandLineRunner {
     drinkService.save(new Drink("water"));
     drinkService.save(new Drink("beer"));
     drinkService.save(new Drink("water"));
+    trickService.save(new Trick("draw"));
   }
 }

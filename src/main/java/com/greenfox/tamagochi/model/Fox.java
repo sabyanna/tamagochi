@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,11 +21,9 @@ public class Fox {
   private int fullness;
   private boolean isAlive;
   @ManyToOne
-  @JoinColumn
-  private Food toEat;
+  private Food food;
   @ManyToOne
-  @JoinColumn
-  private Drink toDrink;
+  private Drink drink;
   @ManyToMany (fetch = FetchType.LAZY)
   private List<Trick> tricks;
 
@@ -40,8 +37,8 @@ public class Fox {
     this.color = color;
     fullness = 10;
     isAlive = true;
-    toEat = new Food("dry bread");
-    toDrink = new Drink("water");
+    food = new Food("dry bread");
+    drink = new Drink("water");
   }
 
   /*
