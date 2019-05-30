@@ -31,7 +31,7 @@ public class CreateController {
   public String Create(Model model, String name, String color, String gender) {
     if (!foxService.isThereFox(name)) {
       //currentFox = name;
-      Fox newFox = new Fox(name, gender, color);
+      Fox newFox = new Fox(name, color);
       foxService.addFox(newFox);
       //model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
       //model.addAttribute("text", foxService.getFoxByName(name).describe());

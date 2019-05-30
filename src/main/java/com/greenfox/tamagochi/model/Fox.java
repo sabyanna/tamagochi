@@ -1,13 +1,16 @@
 package com.greenfox.tamagochi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Foxes")
+@Getter
+@Setter
 public class Fox {
 
   @Id
@@ -18,25 +21,27 @@ public class Fox {
   private String color;
   private int fullness;
   private boolean isAlive;
+  @ManyToOne
+  @JoinColumn
+  private Food toEat;
+  @ManyToOne
+  @JoinColumn
+  private Drink toDrink;
+  @ManyToMany (fetch = FetchType.LAZY)
+  private List<Trick> tricks;
+
   //private Food eats;
   //private Drink drinks;
 
   public Fox() {}
 
-  public Fox(String name, String gender, String color) {
+  public Fox(String name, String color) {
     this.name = name;
-    this.gender = gender;
     this.color = color;
     fullness = 10;
     isAlive = true;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+    toEat = new Food("dry bread");
+    toDrink = new Drink("water");
   }
 
   /*
@@ -105,14 +110,6 @@ public class Fox {
 
  */
 
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
-
   /*
 
   public String describe() {
@@ -125,13 +122,6 @@ public class Fox {
 
    */
 
-  public String getColor() {
-    return color;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
-  }
 
   /*
 
@@ -169,21 +159,6 @@ public class Fox {
 
    */
 
-  public int getFullness() {
-    return fullness;
-  }
-
-  public void setFullness(int fullness) {
-    this.fullness = fullness;
-  }
-
-  public boolean isAlive() {
-    return isAlive;
-  }
-
-  public void setAlive(boolean alive) {
-    isAlive = alive;
-  }
 
 /*
   public void feed() {
