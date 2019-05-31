@@ -1,3 +1,4 @@
+/*
 package com.greenfox.tamagochi.controllers;
 
 import com.greenfox.tamagochi.Service.FoxServiceImpl;
@@ -16,9 +17,11 @@ public class NutritionController {
     this.foxService = foxService;
   }
 
+
+
   @GetMapping("/nutrition")
   public String Nutrition(@RequestParam(required = false) String name, Model model) {
-    model.addAttribute("foxTest", foxService.getFoxes().size() != 0);
+    model.addAttribute("foxTest", foxService.findAll().size() != 0);
     model.addAttribute("foxName", name);
     //model.addAttribute("currentDrink", foxService.getFoxByName(name).getDrinks());
     //model.addAttribute("foods", foxService.getFoxByName(name).getPossibleEats());
@@ -34,7 +37,7 @@ public class NutritionController {
     //foxService.getFoxByName(name).setDrinks(drink);
     foxService.feed(foxService.getFoxByName(name));
     //foxService.feed(getFoxByName(name));
-    model.addAttribute("foxTest", foxService.getFoxes().size() != 0);
+    model.addAttribute("foxTest", foxService.findAll().size() != 0);
     model.addAttribute("foxName", name);
     //model.addAttribute("text", foxService.describe(foxService.getFoxByName(name)));
     //model.addAttribute("text", foxService.getFoxByName(name).describe());
@@ -45,6 +48,10 @@ public class NutritionController {
     foxService.addLog("Fox fed");
     return "redirect:/info?name=" + name;
   }
+
+
 }
+
+ */
 
 

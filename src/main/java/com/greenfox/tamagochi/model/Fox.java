@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,153 +17,30 @@ public class Fox {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
-  private String gender;
-  private String color;
-  private int fullness;
-  private boolean isAlive;
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   private Food food;
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   private Drink drink;
-  @ManyToMany (fetch = FetchType.LAZY)
-  private List<Trick> tricks;
-
-  //private Food eats;
-  //private Drink drinks;
+  @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  private List<Trick> tricks = new ArrayList<>();
 
   public Fox() {}
 
-  public Fox(String name, String color) {
+  public Fox(String name) {
     this.name = name;
-    this.color = color;
-    fullness = 10;
-    isAlive = true;
-    food = new Food("dry bread");
-    drink = new Drink("water");
   }
 
-  /*
-  public List<String> getTricks() {
-    return tricks;
+  public Fox(String name, Food food, Drink drink) {
+    this.name = name;
+    this.food = food;
+    this.drink = drink;
+    drink.addFox(this);
+    food.addFox(this);
   }
 
-   */
-
-  public void setTricks(List<String> tricks) {
-    tricks = tricks;
-  }
-  /*
-
-  public void addToTricks(String trick) {
+  public void addTrick(Trick trick) {
     tricks.add(trick);
-    possibleTricks.remove(trick);
-    fullness -= 3;
-    if (fullness <= 0) {
-      isAlive = false;
-    }
+    trick.addFox(this);
   }
-
-   */
-
-  /*
-
-  public String getEats() {
-    return eats;
-  }
-
-   */
-
-/*
-  public void setEats(String newEats) {
-    possibleEats.remove(newEats);
-    List<String> outputList = new ArrayList<>();
-    outputList.add(newEats);
-    possibleEats.stream()
-            .forEach(x -> outputList.add(x.toString()));
-    possibleEats = outputList;
-    eats = newEats;
-  }
-
- */
-
-/*
-
-  public String getDrinks() {
-    return drinks;
-  }
-
- */
-
-/*
-
-  public void setDrinks(String newDrinks) {
-    possibleDrinks.remove(newDrinks);
-    List<String> outputList = new ArrayList<>();
-    outputList.add(newDrinks);
-    possibleDrinks.stream()
-            .forEach(x -> outputList.add(x.toString()));
-    possibleDrinks = outputList;
-    drinks = newDrinks;
-  }
-
- */
-
-  /*
-
-  public String describe() {
-    if (tricks.size() == 0) {
-      return "This is " + getName() + ". " + "Currently living on " + eats + " and " + drinks + ". " + gender + " knows no tricks yet.";
-    } else {
-      return "This is " + getName() + ". " + "Currently living on " + eats + " and " + drinks + ". " + gender + " knows " + tricks.size() + " tricks.";
-    }
-  }
-
-   */
-
-
-  /*
-
-  public void learnTrick(String trick) {
-    tricks.add(trick);
-  }
-
-  public boolean isThereTrick(String name) {
-    return tricks.contains(name);
-  }
-
-  public List<String> getPossibleTricks() {
-    return possibleTricks;
-  }
-
-  public void setPossibleTricks(List<String> possibleTricks) {
-    this.possibleTricks = possibleTricks;
-  }
-
-  public List<String> getPossibleEats() {
-    return possibleEats;
-  }
-
-  public void setPossibleEats(List<String> possibleEats) {
-    this.possibleEats = possibleEats;
-  }
-
-  public List<String> getPossibleDrinks() {
-    return possibleDrinks;
-  }
-
-  public void setPossibleDrinks(List<String> possibleDrinks) {
-    this.possibleDrinks = possibleDrinks;
-  }
-
-   */
-
-
-/*
-  public void feed() {
-    fullness = 10;
-  }
-
- */
-
 
 }

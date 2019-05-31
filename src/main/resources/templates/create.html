@@ -14,19 +14,19 @@
 </header>
 <div class="box">
     <h1 th:text="${title}"></h1>
-    <form th:action="@{/create}" th:method="post">
+    <form th:action="@{/create(id=${fox.id})}" th:method="post" th:object="${fox}">
 
-        <label for="name">The name of your Fox</label>
-        <input id='name' name='name' type='text' autofocus/>
+        <label>The name of your Fox</label>
+        <input type="text" th:field="*{name}" autofocus/>
 
-        <label for="gender">Gender</label>
-        <select id="gender" name='gender'>
+        <label>Gender</label>
+        <select th:field="*{gender}">
             <option th:value="She">girl</option>
             <option th:value="He">boy</option>
         </select>
 
         <label>Shoe color</label>
-        <select name ="color" th:type="text">
+        <select name ="color" th:type="text" th:field="*{color}">
             <option th:each="color : ${colors}"
                     th:value="${color}"
                     th:text="${color}"
@@ -39,5 +39,8 @@
 </html>
 
 <!-- <img src="../static/greenfox.png" alt="logo" class="logo"> -->
+
+
+
 
 
