@@ -16,12 +16,12 @@
         </a>
         <nav>
             <ul>
-                <li><a th:href="@{/login(name= ${foxName})}">Login</a></li>
-                <li><a th:href="@{/create(name= ${foxName})}">Create</a></li>
-                <li><a th:href="@{/actions(name= ${foxName})}">Actions</a></li>
-                <li th:if="${foxTest}"><a th:href="@{/nutrition(name= ${foxName})}">Food</a></li>
-                <li th:if="${foxTest}"><a th:href="@{/learn(name= ${foxName})}">Trick Center</a></li>
-                <li th:if="${foxTest}"><a th:href="@{/info(name= ${foxName})}" th:text="${foxName}" ></a></li>
+                <li><a th:href="@{/login(name= ${id})}">Login</a></li>
+                <li><a th:href="@{/create(name= ${id})}">Create</a></li>
+                <li><a th:href="@{/actions(name= ${id})}">Actions</a></li>
+                <li th:if="${foxTest}"><a th:href="@{/nutrition(name= ${id})}">Food</a></li>
+                <li th:if="${foxTest}"><a th:href="@{/learn(name= ${id})}">Trick Center</a></li>
+                <li th:if="${foxTest}"><a th:href="@{/info(name= ${id})}" th:text="${id}" ></a></li>
             </ul>
         </nav>
     </div>

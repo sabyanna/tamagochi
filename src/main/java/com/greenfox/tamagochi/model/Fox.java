@@ -17,12 +17,18 @@ public class Fox {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
+
   @ManyToOne(cascade = CascadeType.ALL)
   private Food food;
+
   @ManyToOne(cascade = CascadeType.ALL)
   private Drink drink;
+
   @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private List<Trick> tricks = new ArrayList<>();
+
+  private int hunger;
+  private int thirst;
 
   public Fox() {}
 
@@ -36,11 +42,12 @@ public class Fox {
     this.drink = drink;
     drink.addFox(this);
     food.addFox(this);
+    hunger = 10;
+    thirst = 10;
   }
 
   public void addTrick(Trick trick) {
     tricks.add(trick);
     trick.addFox(this);
   }
-
 }

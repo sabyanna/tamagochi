@@ -34,4 +34,5 @@ public class FoxService {
   public void delete(long id) {
     foxRepository.deleteById(id);
   }
+
 }
