@@ -25,20 +25,38 @@
             <option th:value="He">boy</option>
         </select>
 
+        <label>Drink</label>
+        <select name ="drink" th:type="text" th:field="*{drink}">
+            <option th:each="drink : ${drinks}"
+                    th:value="${drink.getName()}"
+                    th:text="${drink.getName()}"
+            ></option>
+        </select>
+
+        <label>Food</label>
+        <select name ="food" th:type="text" th:field="*{food}">
+            <option th:each="food : ${foods}"
+                    th:value="${food.getName()}"
+                    th:text="${food.getName()}"
+            ></option>
+        </select>
+
+
         <label>Shoe color</label>
         <select name ="color" th:type="text" th:field="*{color}">
             <option th:each="color : ${colors}"
-                    th:value="${color}"
-                    th:text="${color}"
+                    th:value="${color.getName()}"
+                    th:text="${color.getName()}"
             ></option>
         </select>
+
         <button type="submit">GO</button>
     </form>
 </div>
 </body>
 </html>
 
-<!-- <img src="../static/greenfox.png" alt="logo" class="logo"> -->
+<!-- th:field="*{color}"  //  <img src="../static/greenfox.png" alt="logo" class="logo"> -->
 
 
 

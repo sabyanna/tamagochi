@@ -39,7 +39,6 @@ public class LoginController {
       //model.addAttribute("fulltext", foxService.findById(id).getFullness());
       model.addAttribute("foxName", name);
       return "redirect:/info?name=" + id;
-
     } else {
       model.addAttribute("title", "Incorrect Fox name, please try again!");
       return "/login";

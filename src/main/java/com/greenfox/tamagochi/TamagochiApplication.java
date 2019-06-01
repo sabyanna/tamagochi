@@ -1,20 +1,13 @@
 package com.greenfox.tamagochi;
 
-import com.greenfox.tamagochi.Service.DrinkService;
-import com.greenfox.tamagochi.Service.FoodService;
-import com.greenfox.tamagochi.Service.FoxService;
-import com.greenfox.tamagochi.Service.TrickService;
-import com.greenfox.tamagochi.model.Drink;
-import com.greenfox.tamagochi.model.Food;
-import com.greenfox.tamagochi.model.Fox;
-import com.greenfox.tamagochi.model.Trick;
-import com.greenfox.tamagochi.repository.IDrinkRepository;
-import com.greenfox.tamagochi.repository.IFoodRepository;
-import com.greenfox.tamagochi.repository.IFoxRepository;
-import com.greenfox.tamagochi.repository.ITrickRepository;
+import com.greenfox.tamagochi.Service.*;
+import com.greenfox.tamagochi.model.*;
+import com.greenfox.tamagochi.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.awt.*;
 
 @SpringBootApplication
 public class TamagochiApplication implements CommandLineRunner {
@@ -28,9 +21,11 @@ public class TamagochiApplication implements CommandLineRunner {
   private DrinkService drinkService;
   private TrickService trickService;
   private ITrickRepository trickRepository;
+  private IFoxColorRepository colorRepository;
+  private FoxColorService colorService;
 
 
-  public TamagochiApplication(IFoxRepository foxRepository, IFoodRepository foodRepository, FoodService foodService, FoxService foxService, IDrinkRepository drinkRepository, DrinkService drinkService, TrickService trickService, ITrickRepository trickRepository) {
+  public TamagochiApplication(IFoxRepository foxRepository, IFoodRepository foodRepository, FoodService foodService, FoxService foxService, IDrinkRepository drinkRepository, DrinkService drinkService, TrickService trickService, ITrickRepository trickRepository, IFoxColorRepository colorRepository, FoxColorService colorService) {
     this.foxRepository = foxRepository;
     this.foodRepository = foodRepository;
     this.foodService = foodService;
@@ -39,6 +34,8 @@ public class TamagochiApplication implements CommandLineRunner {
     this.drinkService = drinkService;
     this.trickService = trickService;
     this.trickRepository = trickRepository;
+    this.colorRepository = colorRepository;
+    this.colorService = colorService;
   }
 
   public static void main(String[] args) {
@@ -47,11 +44,23 @@ public class TamagochiApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    FoxColor lime = new FoxColor("lime");
+    FoxColor red = new FoxColor("red");
 
-    //Food pali = new Food("husospalacsinta");
-    //Drink lemonade = new Drink("lemonade");
-    //Trick sleep = new Trick("sleep");
-    //Fox fox = new Fox("anna", pali, lemonade);
-    //fox.addTrick(sleep);
+
+
+
+
+    colorService.save(lime);
+    colorService.save(red);
+/*
+    Food pali = new Food("husospalacsinta");
+    Drink lemonade = new Drink("lemonade");
+    Trick sleep = new Trick("sleep");
+    Fox fox = new Fox("anna", "She",  pali, lemonade, lime);
+    fox.addTrick(sleep);
+    foxService.save(fox);
+
+ */
   }
 }

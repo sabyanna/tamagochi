@@ -17,9 +17,16 @@ public class Fox {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
+  private int hunger;
+  private int thirst;
+  private boolean isAlive;
+  private String gender;
 
   @ManyToOne(cascade = CascadeType.ALL)
   private Food food;
+
+  @ManyToOne(cascade = CascadeType.ALL)
+  private FoxColor foxColor;
 
   @ManyToOne(cascade = CascadeType.ALL)
   private Drink drink;
@@ -27,23 +34,20 @@ public class Fox {
   @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private List<Trick> tricks = new ArrayList<>();
 
-  private int hunger;
-  private int thirst;
-
   public Fox() {}
 
-  public Fox(String name) {
-    this.name = name;
-  }
-
-  public Fox(String name, Food food, Drink drink) {
+  public Fox(String name, String gender, Food food, Drink drink, FoxColor foxColor) {
     this.name = name;
     this.food = food;
     this.drink = drink;
+    this.gender = gender;
+    this.foxColor = foxColor;
     drink.addFox(this);
     food.addFox(this);
+    foxColor.addFox(this);
     hunger = 10;
     thirst = 10;
+    isAlive = true;
   }
 
   public void addTrick(Trick trick) {
