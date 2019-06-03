@@ -26,27 +26,27 @@
         </select>
 
         <label>Drink</label>
-        <select name ="drink" th:type="text" th:field="*{drink}">
+        <select name ="drink"  th:field="*{drink.id}">
             <option th:each="drink : ${drinks}"
-                    th:value="${drink.getName()}"
+                    th:value="${drink.id}"
                     th:text="${drink.getName()}"
             ></option>
         </select>
 
         <label>Food</label>
-        <select name ="food" th:type="text" th:field="*{food}">
+        <select name ="food" th:field="*{food}">
             <option th:each="food : ${foods}"
-                    th:value="${food.getName()}"
+                    th:value="${food.id}"
                     th:text="${food.getName()}"
             ></option>
         </select>
 
 
         <label>Shoe color</label>
-        <select name ="color" th:type="text" th:field="*{color}">
-            <option th:each="color : ${colors}"
-                    th:value="${color.getName()}"
-                    th:text="${color.getName()}"
+        <select name ="color" th:field="*{foxColor}">
+            <option th:each="foxColor : ${colors}"
+                    th:value="${foxColor.id}"
+                    th:text="${foxColor.getName()}"
             ></option>
         </select>
 

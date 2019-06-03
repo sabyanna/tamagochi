@@ -34,7 +34,11 @@ public class Fox {
   @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private List<Trick> tricks = new ArrayList<>();
 
-  public Fox() {}
+  public Fox() {
+    hunger = 10;
+    thirst = 10;
+    isAlive = true;
+  }
 
   public Fox(String name, String gender, Food food, Drink drink, FoxColor foxColor) {
     this.name = name;
@@ -53,5 +57,20 @@ public class Fox {
   public void addTrick(Trick trick) {
     tricks.add(trick);
     trick.addFox(this);
+  }
+
+  public void setFood(Food food) {
+    food.addFox(this);
+    this.food = food;
+  }
+
+  public void setFoxColor(FoxColor foxColor) {
+    foxColor.addFox(this);
+    this.foxColor = foxColor;
+  }
+
+  public void setDrink(Drink drink) {
+    drink.addFox(this);
+    this.drink = drink;
   }
 }

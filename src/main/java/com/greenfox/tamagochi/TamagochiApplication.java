@@ -46,13 +46,25 @@ public class TamagochiApplication implements CommandLineRunner {
   public void run(String... args) throws Exception {
     FoxColor lime = new FoxColor("lime");
     FoxColor red = new FoxColor("red");
-
-
-
-
-
+    FoxColor blue = new FoxColor("blue");
+    FoxColor black = new FoxColor("black");
+    FoxColor pink = new FoxColor("pink");
     colorService.save(lime);
     colorService.save(red);
+    colorService.save(blue);
+    colorService.save(black);
+    colorService.save(pink);
+
+    Food pali = new Food("husospalacsinta");
+    foodService.save(pali);
+
+    Drink lemonade = new Drink("lemonade");
+    drinkService.save(lemonade);
+
+    Trick sleep = new Trick("sleep");
+    trickService.save(sleep);
+
+
 /*
     Food pali = new Food("husospalacsinta");
     Drink lemonade = new Drink("lemonade");
