@@ -26,7 +26,7 @@
         </select>
 
         <label>Drink</label>
-        <select name ="drink"  th:field="*{drink.id}">
+        <select name ="drink"  th:field="*{drink}">
             <option th:each="drink : ${drinks}"
                     th:value="${drink.id}"
                     th:text="${drink.getName()}"
