@@ -1,7 +1,7 @@
-/*
+
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.FoxServiceImpl;
+import com.greenfox.tamagochi.Service.FoxService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class InfoController {
 
-  private FoxServiceImpl foxService;
+  private FoxService foxService;
 
-  public InfoController(FoxServiceImpl foxService) {
+  public InfoController(FoxService foxService) {
     this.foxService = foxService;
   }
 
@@ -34,6 +34,6 @@ public class InfoController {
   }
 }
 
- */
+
 
 

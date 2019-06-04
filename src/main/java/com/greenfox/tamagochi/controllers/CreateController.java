@@ -63,7 +63,8 @@ public class CreateController {
       //model.addAttribute("foxName", name);
 
      */
-      return "redirect:/";
+      //return "redirect:/";
+    return "redirect:/info?id=" + fox.getId();
     //}
   }
 
