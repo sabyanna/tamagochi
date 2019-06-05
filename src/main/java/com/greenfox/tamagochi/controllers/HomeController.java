@@ -15,6 +15,8 @@ public class HomeController {
     this.foxService = foxService;
   }
 
+
+
   @GetMapping("/")
   public String getHome(Model model) {
     model.addAttribute("foxTest", foxService.findAll().size() != 0);

@@ -3,15 +3,18 @@ package com.greenfox.tamagochi;
 import com.greenfox.tamagochi.Service.*;
 import com.greenfox.tamagochi.model.*;
 import com.greenfox.tamagochi.repository.*;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.awt.*;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class TamagochiApplication implements CommandLineRunner {
-
 
   private IFoxRepository foxRepository;
   private IFoodRepository foodRepository;
@@ -36,6 +39,11 @@ public class TamagochiApplication implements CommandLineRunner {
     this.trickRepository = trickRepository;
     this.colorRepository = colorRepository;
     this.colorService = colorService;
+  }
+
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
   }
 
   public static void main(String[] args) {

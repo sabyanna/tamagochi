@@ -1,4 +1,4 @@
-
+/*
 package com.greenfox.tamagochi.controllers;
 
 import com.greenfox.tamagochi.Service.FoxService;
@@ -45,6 +45,8 @@ public class LoginController {
     }
   }
 }
+
+ */
 
 
 

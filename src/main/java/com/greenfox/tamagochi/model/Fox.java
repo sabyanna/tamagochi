@@ -31,6 +31,11 @@ public class Fox {
   @ManyToOne(cascade = CascadeType.ALL)
   private Drink drink;
 
+  @ManyToOne(cascade = CascadeType.ALL)
+  private User user;
+
+
+
   @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private List<Trick> tricks = new ArrayList<>();
 

@@ -30,8 +30,24 @@
 
     <div th:object="${fox}" th:if="${fox.isAlive()}" class="box" >
         <img th:src="'/' + ${fox.getFoxColor().getName()} + '.png'" alt="logo" class="logo">
-        <h1>Hunger:</h1>
+        <h1 th:text="'This is ' + ${fox.getName()}"></h1>
+        <h2>Hunger:</h2>
         <p th:text="${fox.getHunger()}"></p>
+        <h2>Thirst</h2>
+        <p th:text="${fox.getThirst()}"></p>
+
+        <div class="tricks" th:if="${fox.getTricks().size() == 0}">
+            <h2>Teach them some tricks!</h2>
+        </div>
+
+        <div class="tricks" th:unless="${fox.getTricks().size() == 0}">
+            <h2>Tricks</h2>
+            <ul>
+                <li th:each="trick : ${fox.getTricks()}"
+                    th:text="${trick.getName()}"></li>
+            </ul>
+
+        </div>
 
 
         <!--
