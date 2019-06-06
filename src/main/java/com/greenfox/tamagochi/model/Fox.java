@@ -31,10 +31,8 @@ public class Fox {
   @ManyToOne(cascade = CascadeType.ALL)
   private Drink drink;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.MERGE)
   private User user;
-
-
 
   @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private List<Trick> tricks = new ArrayList<>();
@@ -45,15 +43,17 @@ public class Fox {
     isAlive = true;
   }
 
-  public Fox(String name, String gender, Food food, Drink drink, FoxColor foxColor) {
+  public Fox(String name, String gender, Food food, Drink drink, FoxColor foxColor, User user) {
     this.name = name;
     this.food = food;
     this.drink = drink;
     this.gender = gender;
     this.foxColor = foxColor;
+    this.user = user;
     drink.addFox(this);
     food.addFox(this);
     foxColor.addFox(this);
+    user.addFox(this);
     hunger = 10;
     thirst = 10;
     isAlive = true;
@@ -72,6 +72,11 @@ public class Fox {
   public void setFoxColor(FoxColor foxColor) {
     foxColor.addFox(this);
     this.foxColor = foxColor;
+  }
+
+  public void setUser(User user) {
+    user.addFox(this);
+    this.user = user;
   }
 
   public void setDrink(Drink drink) {

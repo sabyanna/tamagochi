@@ -35,4 +35,8 @@ public class FoxService {
     foxRepository.deleteById(id);
   }
 
+  public Fox findFoxByName(String name) {
+    return foxRepository.findFoxByName(name);
+  }
+
 }

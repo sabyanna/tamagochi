@@ -2,6 +2,7 @@
 package com.greenfox.tamagochi.controllers;
 
 import com.greenfox.tamagochi.Service.FoxService;
+import com.greenfox.tamagochi.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class InfoController {
 
   private FoxService foxService;
+  private UserService userService;
 
-  public InfoController(FoxService foxService) {
+  public InfoController(FoxService foxService, UserService userService) {
     this.foxService = foxService;
+    this.userService = userService;
   }
 
 
   @GetMapping("/info")
-  public String Info(@RequestParam long id, Model model) {
-    model.addAttribute("foxTest", foxService.findAll().size() != 0);
-    model.addAttribute("fox", foxService.findById(id));
+  public String Info(Model model) {
+    model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getFoxId()));
+    model.addAttribute("foxTest", true);
+    model.addAttribute("userTest", true);
+
     //model.addAttribute("foxName", name);
     //model.addAttribute("color", "/" + foxService.findById(id).getColor() + ".png");
     //model.addAttribute("colordead", "/" + foxService.findById(id).getColor() + "-dead.png");

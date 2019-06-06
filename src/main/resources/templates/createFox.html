@@ -14,13 +14,13 @@
 </header>
 <div class="box">
     <h1 th:text="${title}"></h1>
-    <form th:action="@{/create}" th:method="post" >
+    <form th:action="@{/createFox}" th:method="post" >
 
         <label>The name of your Fox</label>
         <input type="text" name="name" autofocus/>
 
         <label>Gender</label>
-        <select name=""gender>
+        <select name="gender">
             <option th:value="She">girl</option>
             <option th:value="He">boy</option>
         </select>
@@ -28,9 +28,8 @@
         <label>Drink</label>
         <select name ="drink">
             <option th:each="drink : ${drinks}"
-                    th:value="${drink.id}"
-                    th:text="${drink.getName()}"
-            ></option>
+                    th:value="${drink.getId()}"
+                    th:text="${drink.getName()}"></option>
         </select>
 
         <label>Food</label>
