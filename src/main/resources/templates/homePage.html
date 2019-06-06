@@ -19,9 +19,12 @@
 
     <h1 th:text="${title}"></h1>
     <p>What's your fox's name?</p>
-    <form th:action="@{/login}" th:method="post">
-        <input id='name' name='name' type='text' autofocus/>
-        <button type="submit">GO</button>
+    <form action="/login" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Log in</button>
     </form>
 
 </div>

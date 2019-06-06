@@ -2,6 +2,7 @@
 package com.greenfox.tamagochi.controllers;
 
 import com.greenfox.tamagochi.Service.FoxService;
+import com.greenfox.tamagochi.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,20 +11,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
   private FoxService foxService;
+  private UserService userService;
 
-  public HomeController(FoxService foxService) {
+  public HomeController(FoxService foxService, UserService userService) {
     this.foxService = foxService;
+    this.userService = userService;
   }
-
-
 
   @GetMapping("/")
   public String getHome(Model model) {
-    model.addAttribute("foxTest", foxService.findAll().size() != 0);
+    if (userService.getLoggedInUser() == null){
+      model.addAttribute("userTest", false);
+      return "homePage";
+    }
+    model.addAttribute("userTest", true);
+    model.addAttribute("foxTest", userService.getLoggedInUser().getFoxId() != null);
     //model.addAttribute("foxName", currentFox);
     model.addAttribute("title", foxService.findAll().size() != 0);
     model.addAttribute("title", "Please log in!");
-    return "login";
+    return "homePage";
+
   }
 }
 

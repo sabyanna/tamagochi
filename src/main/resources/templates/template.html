@@ -16,13 +16,18 @@
         </a>
         <nav>
             <ul>
-                <li><a th:href="@{/login(id= ${id})}">Login</a></li>
-                <li><a th:href="@{/create(id= ${id})}">Create</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/createAccount}">Create Account</a></li>
+                <li th:if="${userTest}"><a th:href="@{/createFox}">Create Fox</a></li>
+                <li th:if="${userTest} and ${foxTest}"><a th:href="@{/nutrition}">Food</a></li>
+                <li th:if="${userTest} and ${foxTest}"><a th:href="@{/learn}">Trick Center</a></li>
+
+
                 <!--
-                <li th:if="${foxTest}"><a th:href="@{/nutrition(name= ${id})}">Food</a></li>
-                <li th:if="${foxTest}"><a th:href="@{/learn(name= ${id})}">Trick Center</a></li>
-                -->
-                <li th:if="${foxTest}"><a th:href="@{/info(id= ${id})}" th:text="${fox.getName}" ></a></li>
+                <li th:if="${userTest} && ${userFoxTest} && ${foxTest}"><a th:href="@{/nutrition}">Food</a></li>
+                <li th:if="${userTest} && ${userFoxTest}  && ${foxTest}"><a th:href="@{/learn}">Trick Center</a></li>
+                <li th:if="${userTest} && ${userFoxTest}  && ${foxTest}"><a th:href="@{/info}" th:text="${fox.getName}" ></a></li>
+-->
             </ul>
         </nav>
     </div>

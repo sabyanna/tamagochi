@@ -1,3 +1,4 @@
+/*
 package com.greenfox.tamagochi.controllers;
 
 import com.greenfox.tamagochi.Service.DrinkService;
@@ -15,7 +16,7 @@ import java.awt.*;
 import java.util.List;
 
 @Controller
-public class CreateController {
+public class CreateFoxController {
 
 
   private FoxService foxService;
@@ -23,7 +24,7 @@ public class CreateController {
   private DrinkService drinkService;
   private FoodService foodService;
 
-  public CreateController(FoxService foxService, FoxColorService foxColorService, DrinkService drinkService, FoodService foodService) {
+  public CreateFoxController(FoxService foxService, FoxColorService foxColorService, DrinkService drinkService, FoodService foodService) {
     this.foxService = foxService;
     this.foxColorService = foxColorService;
     this.drinkService = drinkService;
@@ -62,13 +63,16 @@ public class CreateController {
       model.addAttribute("title", "There is already a fox with that name, please choose a different one!");
       //model.addAttribute("foxName", name);
 
-     */
+
       //return "redirect:/";
     return "redirect:/info?id=" + fox.getId();
     //}
   }
 
 }
+
+ */
+
 
 
 

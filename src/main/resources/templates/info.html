@@ -10,21 +10,7 @@
 </head>
 <body>
     <header>
-        <div  class="container clearfix">
-            <a href="/">
-                <img src="/greenfoxlogo.png" alt="logo" class="logo">
-            </a>
-            <nav>
-                <ul>
-                    <li><a th:href="@{/login(id= ${fox.getId()})}">Login</a></li>
-                    <li><a th:href="@{/create(id= ${fox.getId()})}">Create</a></li>
-                    <!--
-                    <li th:if="${foxTest}"><a th:href="@{/nutrition(name= ${id})}">Food</a></li>
-                    <li th:if="${foxTest}"><a th:href="@{/learn(name= ${id})}">Trick Center</a></li>
-                    -->
-                    <li th:if="${foxTest}"><a th:href="@{/info(id= ${fox.getId()})}" th:text="${fox.getName()}" ></a></li>
-                </ul>
-            </nav>
+        <div th:replace="template :: header" class="container clearfix" >
         </div>
     </header>
 
