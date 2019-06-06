@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FoxClub</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="icon" href="/black.png">
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div th:replace="template :: header" class="container clearfix" >
+    </div>
+</header>
+<div class="box">
+    <h2>Here you can have your very own Fox!</h2>
+    <h1>Create a New Account</h1>
+
+    <form action="/createAccount" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Create</button>
+    </form>
+
+</div>
+
+
+
+</body>
+</html>
+
+<!-- <img src="../static/greenfox.png" alt="logo" class="logo"> -->
+
+

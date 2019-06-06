@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FoxClub</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="icon" href="/black.png">
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div th:replace="template :: header" class="container clearfix" >
+    </div>
+</header>
+<div th:object="${user}" class="box">
+    <h1 th:text="'Welcome ' + ${user.getUsername()} + '!'"></h1>
+    <h2 th:if="${userFoxTest}" >You have no foxes yet :( create some!</h2>
+    <div th:unless="${userFoxTest}">
+        <form th:action="/chooseFox" th:method="post">
+            <label>Choose your fox</label>
+            <select name ="foxId">
+                <option th:each="fox : ${userFoxes}"
+                        th:value="${fox.id}"
+                        th:text="${fox.name}">
+                </option>
+            </select>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+
