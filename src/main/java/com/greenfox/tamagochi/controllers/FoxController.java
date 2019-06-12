@@ -73,4 +73,15 @@ public class FoxController {
   public String newFox() {
     return "redirect:/createFox";
   }
+
+  @GetMapping("/nutrition")
+  public String nutritionPage(Model model) {
+    model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
+    model.addAttribute("user", userService.getLoggedInUser());
+    model.addAttribute("foods", foodService.findAll());
+    model.addAttribute("drinks", drinkService.findAll());
+    model.addAttribute("userTest", true);
+    return "nutrition";
+
+  }
 }

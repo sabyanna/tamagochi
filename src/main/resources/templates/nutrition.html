@@ -14,25 +14,26 @@
 </header>
 <div class="box">
     <h1>What should your fox eat?</h1>
-    <form  th:action="@{/nutrition}" th:method="post">
-        <input name = "name" th:value="${foxName}" th:type="hidden">
-        <label  th:text="${foodTitle}"></label>
-        <select name ="food" th:type="text">
-            <option th:each="food : ${foods}"
-                    th:value="${food}"
-                    th:text="${food}"
-            ></option>
-        </select>
+    <div>
+        <form  action="/nutrition" method="post">
+            <label for="food">Food</label>
+            <select name ="food" id="food" th:type="text">
+                <option th:each="food : ${foods}"
+                        th:value="${food.id}"
+                        th:text="${food.name}"
+                ></option>
+            </select>
 
-        <label th:text="${drinkTitle}"></label>
-        <select name ="drink" th:type="text">
-            <option th:each="drink : ${drinks}"
-                    th:value="${drink}"
-                    th:text="${drink}">
-            </option>
-        </select>
-        <button type="submit">EAT!</button>
-    </form>
+            <label for="drink">Drink</label>
+            <select name ="drink" id="drink" th:type="text">
+                <option th:each="drink : ${drinks}"
+                        th:value="${drink.id}"
+                        th:text="${drink.name}">
+                </option>
+            </select>
+            <button type="submit">EAT!</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
