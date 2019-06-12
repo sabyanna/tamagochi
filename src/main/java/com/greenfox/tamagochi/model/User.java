@@ -24,7 +24,7 @@ public class User {
 
   private Long currentFox;
 
-  @OneToMany(targetEntity = Fox.class, fetch = FetchType.EAGER, mappedBy = "owner")
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
   private List<Fox> foxList;
 
   public User(String username, String password) {

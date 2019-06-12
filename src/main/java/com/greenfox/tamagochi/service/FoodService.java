@@ -1,7 +1,6 @@
-package com.greenfox.tamagochi.Service;
+package com.greenfox.tamagochi.service;
 
 import com.greenfox.tamagochi.model.Food;
-import com.greenfox.tamagochi.model.Fox;
 import com.greenfox.tamagochi.repository.IFoodRepository;
 import org.springframework.stereotype.Service;
 

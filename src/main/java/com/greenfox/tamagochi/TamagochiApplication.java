@@ -1,6 +1,6 @@
 package com.greenfox.tamagochi;
 
-import com.greenfox.tamagochi.Service.*;
+import com.greenfox.tamagochi.service.*;
 import com.greenfox.tamagochi.model.*;
 import com.greenfox.tamagochi.repository.*;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;

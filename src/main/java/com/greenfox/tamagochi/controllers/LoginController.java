@@ -1,7 +1,7 @@
 /*
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.FoxService;
+import com.greenfox.tamagochi.service.FoxService;
 import com.greenfox.tamagochi.repository.IFoxRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

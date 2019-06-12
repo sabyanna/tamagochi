@@ -1,12 +1,11 @@
 
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.FoxService;
-import com.greenfox.tamagochi.Service.UserService;
+import com.greenfox.tamagochi.service.FoxService;
+import com.greenfox.tamagochi.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class InfoController {

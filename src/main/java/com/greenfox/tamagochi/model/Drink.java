@@ -17,7 +17,7 @@ public class Drink {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
-  @OneToMany (fetch = FetchType.LAZY)
+  @OneToMany (fetch = FetchType.LAZY, mappedBy = "drink")
   public List<Fox> foxes = new ArrayList<>();
 
   public Drink() {

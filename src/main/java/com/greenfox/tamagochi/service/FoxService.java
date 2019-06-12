@@ -1,4 +1,4 @@
-package com.greenfox.tamagochi.Service;
+package com.greenfox.tamagochi.service;
 
 import com.greenfox.tamagochi.model.Fox;
 import com.greenfox.tamagochi.repository.IFoxRepository;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Service
 public class FoxService {

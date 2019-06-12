@@ -1,10 +1,10 @@
 /*
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.DrinkService;
-import com.greenfox.tamagochi.Service.FoodService;
-import com.greenfox.tamagochi.Service.FoxColorService;
-import com.greenfox.tamagochi.Service.FoxService;
+import com.greenfox.tamagochi.service.DrinkService;
+import com.greenfox.tamagochi.service.FoodService;
+import com.greenfox.tamagochi.service.FoxColorService;
+import com.greenfox.tamagochi.service.FoxService;
 import com.greenfox.tamagochi.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

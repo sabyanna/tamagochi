@@ -1,4 +1,4 @@
-package com.greenfox.tamagochi.Service;
+package com.greenfox.tamagochi.service;
 import com.greenfox.tamagochi.model.Drink;
 import com.greenfox.tamagochi.repository.IDrinkRepository;
 import org.springframework.stereotype.Service;

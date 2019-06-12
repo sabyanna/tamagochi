@@ -1,4 +1,4 @@
-package com.greenfox.tamagochi.Service;
+package com.greenfox.tamagochi.service;
 
 import com.greenfox.tamagochi.model.User;
 import com.greenfox.tamagochi.repository.IUserRepository;

@@ -18,7 +18,7 @@ public class Food{
   private long id;
   private String name;
 
-  @OneToMany ()
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "food")
   @Column(nullable = true)
   public List<Fox> foxes = new ArrayList<>();
 

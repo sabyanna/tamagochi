@@ -1,19 +1,21 @@
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.UserService;
+import com.greenfox.tamagochi.service.FoxService;
+import com.greenfox.tamagochi.service.UserService;
 import com.greenfox.tamagochi.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
   private UserService userService;
+  private FoxService foxService;
 
-  public UserController(UserService userService) {
+  public UserController(UserService userService, FoxService foxService) {
     this.userService = userService;
+    this.foxService = foxService;
   }
 
   @GetMapping("/createAccount")
@@ -34,6 +36,22 @@ public class UserController {
     return "redirect:/userMainPage";
   }
 
+  @GetMapping("/")
+  public String getHomeAndLogin(Model model) {
+    if (userService.getLoggedInUser() == null){
+      model.addAttribute("userTest", false);
+      return "homePage";
+    }
+    model.addAttribute("userTest", true);
+    model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
+    //model.addAttribute("foxName", currentFox);
+    //model.addAttribute("title", foxService.findAll().size() != 0);
+    //model.addAttribute("title", "Please log in!");
+    return "homePage";
+  }
+
+
+
   @GetMapping("/userMainPage")
   public String userMainPageLoader(Model model) {
     model.addAttribute("userTest", true);
@@ -42,6 +60,12 @@ public class UserController {
     model.addAttribute("userFoxes", userService.getLoggedInUser().getFoxList());
     model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
     return "userMainPage";
+  }
+
+  @GetMapping("/logout")
+  public String logout() {
+    userService.logout();
+    return "redirect:/";
   }
 
 }

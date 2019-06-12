@@ -1,7 +1,7 @@
 /*
 package com.greenfox.tamagochi.controllers;
 
-import com.greenfox.tamagochi.Service.FoxServiceImpl;
+import com.greenfox.tamagochi.service.FoxServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
