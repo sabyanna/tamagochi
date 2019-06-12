@@ -22,7 +22,7 @@ public class InfoController {
 
   @GetMapping("/info")
   public String Info(Model model) {
-    model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getFoxId()));
+    model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
     model.addAttribute("foxTest", true);
     model.addAttribute("userTest", true);
 

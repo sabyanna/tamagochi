@@ -25,7 +25,7 @@ public class HomeController {
       return "homePage";
     }
     model.addAttribute("userTest", true);
-    model.addAttribute("foxTest", userService.getLoggedInUser().getFoxId() != null);
+    model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
     //model.addAttribute("foxName", currentFox);
     model.addAttribute("title", foxService.findAll().size() != 0);
     model.addAttribute("title", "Please log in!");

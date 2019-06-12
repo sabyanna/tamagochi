@@ -22,21 +22,22 @@ public class User {
 
   private String passwordHash;
 
-  private Long foxId;
+  private Long currentFox;
 
-  @OneToMany()
-  @Column(nullable = true)
-  public List<Fox> foxes  = new ArrayList<>();
+  @OneToMany(targetEntity = Fox.class, fetch = FetchType.EAGER, mappedBy = "owner")
+  private List<Fox> foxList;
 
   public User(String username, String password) {
     this.username = username;
     this.password = password;
+    foxList = new ArrayList<>();
   }
 
   public User() {
+    foxList = new ArrayList<>();
   }
 
   public void addFox(Fox fox) {
-    foxes.add(fox);
+    foxList.add(fox);
   }
 }

@@ -23,8 +23,8 @@ public class UserController {
       return "createAccount";
     }
     model.addAttribute("userTest", true);
-    model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxes().size() != 0);
-    model.addAttribute("foxTest", userService.getLoggedInUser().getFoxId() != null);
+    model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxList().size() != 0);
+    model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
     return "createAccount";
   }
 
@@ -38,9 +38,9 @@ public class UserController {
   public String userMainPageLoader(Model model) {
     model.addAttribute("userTest", true);
     model.addAttribute("user", userService.getLoggedInUser());
-    model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxes().size() == 0);
-    model.addAttribute("userFoxes", userService.getLoggedInUser().getFoxes());
-    model.addAttribute("foxTest", userService.getLoggedInUser().getFoxId() != null);
+    model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxList().size() == 0);
+    model.addAttribute("userFoxes", userService.getLoggedInUser().getFoxList());
+    model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
     return "userMainPage";
   }
 

@@ -3,6 +3,7 @@ package com.greenfox.tamagochi.controllers;
 import com.greenfox.tamagochi.Service.*;
 import com.greenfox.tamagochi.model.Food;
 import com.greenfox.tamagochi.model.Fox;
+import com.greenfox.tamagochi.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class FoxController {
 
   @GetMapping("/createFox")
   public String Create(Model model) {
-    model.addAttribute("foxTest", userService.getLoggedInUser().getFoxId() != null);
+    model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
     model.addAttribute("userTest", true);
     model.addAttribute("colors", foxColorService.findAll());
     model.addAttribute("foods", foodService.findAll());
@@ -38,11 +39,19 @@ public class FoxController {
   }
 
   @PostMapping("/createFox")
-  public String Create(String name, String gender, Integer drink, Integer food, Integer color) {
-    Fox newFox = new Fox(name, gender, foodService.findById(food), drinkService.findById(drink), foxColorService.findById(color), userService.getLoggedInUser());
-    foxService.save(newFox);
-    userService.getLoggedInUser().setFoxId(newFox.getId());
-    //userService.save(userService.getLoggedInUser());
-    return "redirect:/info";
+  public String Create(Model model, String name, String gender, Integer drink, Integer food, Integer color) {
+    User user = userService.getLoggedInUser();
+    foxService.save(new Fox(name, gender, foodService.findById(food), drinkService.findById(drink), foxColorService.findById(color)));
+
+    foxService.findFoxByName(name).setUser(user);
+    foxService.save(foxService.findFoxByName(name));
+    user.setCurrentFox(foxService.findFoxByName(name).getId());
+    user.addFox(foxService.findFoxByName(name));
+
+    userService.save(user);
+    model.addAttribute("fox", foxService.findFoxByName(name));
+    model.addAttribute("foxTest", true);
+    model.addAttribute("userTest", true);
+    return "info";
   }
 }
