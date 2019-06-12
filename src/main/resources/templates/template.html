@@ -16,7 +16,6 @@
         </a>
         <nav>
             <ul>
-                <li th:unless="${userTest}"><a th:href="@{/login}">Login</a></li>
                 <li><a th:href="@{/createAccount}">Create Account</a></li>
                 <li th:if="${userTest}"><a th:href="@{/createFox}">Create Fox</a></li>
                 <li th:if="${userTest} and ${foxTest}"><a th:href="@{/nutrition}">Food</a></li>

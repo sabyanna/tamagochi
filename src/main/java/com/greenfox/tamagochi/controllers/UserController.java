@@ -20,7 +20,7 @@ public class UserController {
 
   @GetMapping("/createAccount")
   public String userCreater(Model model) {
-    if (userService.getLoggedInUser() == null){
+    if (userService.getLoggedInUser() == null) {
       model.addAttribute("userTest", false);
       return "createAccount";
     }
@@ -38,7 +38,7 @@ public class UserController {
 
   @GetMapping("/")
   public String getHomeAndLogin(Model model) {
-    if (userService.getLoggedInUser() == null){
+    if (userService.getLoggedInUser() == null) {
       model.addAttribute("userTest", false);
       return "homePage";
     }
@@ -50,13 +50,26 @@ public class UserController {
     return "homePage";
   }
 
-
+  @PostMapping("/login")
+  public String loginUser(User user, Model model) {
+    if (userService.validateAndLoginUser(user)) {
+      return "redirect:/userMainPage";
+    }
+    model.addAttribute("message", "Incorrect username or password");
+    if (userService.getLoggedInUser() == null) {
+      model.addAttribute("userTest", false);
+      return "homePage";
+    }
+    model.addAttribute("userTest", true);
+    model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
+    return "homePage";
+  }
 
   @GetMapping("/userMainPage")
   public String userMainPageLoader(Model model) {
     model.addAttribute("userTest", true);
     model.addAttribute("user", userService.getLoggedInUser());
-    model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxList().size() == 0);
+    model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxList().size() != 0);
     model.addAttribute("userFoxes", userService.getLoggedInUser().getFoxList());
     model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
     return "userMainPage";

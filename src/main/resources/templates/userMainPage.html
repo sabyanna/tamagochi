@@ -14,17 +14,18 @@
 </header>
 <div th:object="${user}" class="box">
     <h1 th:text="'Welcome ' + ${user.getUsername()} + '!'"></h1>
-    <h2 th:if="${userFoxTest}" >You have no foxes yet :( create some!</h2>
-    <div th:unless="${userFoxTest}">
-        <form th:action="/chooseFox" th:method="post">
+    <h2 th:unless="${userFoxTest}" >You have no foxes yet :( create some!</h2>
+    <div th:if="${userFoxTest}">
+        <form action="/chooseFox" method="post">
             <label>Choose your fox</label>
-            <select name ="foxId">
-                <option th:each="fox : ${userFoxes}"
-                        th:value="${fox.id}"
-                        th:text="${fox.name}">
-                </option>
-            </select>
-
+            <div>
+                <select name ="foxId" th:type="text">
+                    <option th:each="fox : ${userFoxes}"
+                            th:value="${fox.id}"
+                            th:text="${fox.name}">
+                    </option>
+                </select>
+            </div>
         </form>
     </div>
 </div>
