@@ -24,9 +24,17 @@
                             th:value="${fox.id}"
                             th:text="${fox.name}">
                     </option>
+
                 </select>
+                <div><button type="submit">Choose</button></div>
             </div>
         </form>
+    </div>
+    <div>
+        <form action="/newFox" method="post">
+            <button type="submit">Make new fox!</button>
+        </form>
+
     </div>
 </div>
 </body>

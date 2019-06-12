@@ -32,6 +32,7 @@ public class FoxController {
     model.addAttribute("foods", foodService.findAll());
     model.addAttribute("drinks", drinkService.findAll());
     model.addAttribute("title", "Create a new fox!");
+    model.addAttribute("user", userService.getLoggedInUser());
     return "createFox";
   }
 
@@ -44,9 +45,32 @@ public class FoxController {
     user.setCurrentFox(foxService.findFoxByName(name).getId());
     user.addFox(foxService.findFoxByName(name));
     userService.save(user);
-    model.addAttribute("fox", foxService.findFoxByName(name));
-    model.addAttribute("foxTest", true);
+    //model.addAttribute("fox", foxService.findFoxByName(name));
+    //model.addAttribute("foxTest", true);
+    //model.addAttribute("userTest", true);
+    //model.addAttribute("user", userService.getLoggedInUser());
+    return "redirect:/info";
+  }
+
+  @GetMapping("/info")
+  public String foxInfo(Model model) {
+    model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
+    model.addAttribute("user", userService.getLoggedInUser());
     model.addAttribute("userTest", true);
     return "info";
+  }
+
+  @PostMapping("/chooseFox")
+  public String chooseFox(long foxId, Model model) {
+    userService.getLoggedInUser().setCurrentFox(foxId);
+    //model.addAttribute("fox", foxService.findById(foxId));
+    //model.addAttribute("foxTest", true);
+    //model.addAttribute("userTest", true);
+    return "redirect:/info";
+  }
+
+  @PostMapping("/newFox")
+  public String newFox() {
+    return "redirect:/createFox";
   }
 }

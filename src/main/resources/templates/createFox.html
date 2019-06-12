@@ -16,40 +16,47 @@
     <h1 th:text="${title}"></h1>
     <form th:action="@{/createFox}" th:method="post" >
 
-        <label>The name of your Fox</label>
-        <input type="text" name="name" autofocus/>
+        <div><label>The name of your Fox</label></div>
+        <div><input type="text" name="name" autofocus/></div>
 
-        <label>Gender</label>
-        <select name="gender">
-            <option th:value="She">girl</option>
-            <option th:value="He">boy</option>
-        </select>
+        <div><label>Gender</label></div>
+        <div>
+            <select name="gender">
+                <option th:value="She">girl</option>
+                <option th:value="He">boy</option>
+            </select>
+        </div>
 
-        <label>Drink</label>
-        <select name ="drink">
-            <option th:each="drink : ${drinks}"
+        <div><label>Drink</label></div>
+        <div>
+            <select name ="drink">
+                <option th:each="drink : ${drinks}"
                     th:value="${drink.getId()}"
                     th:text="${drink.getName()}"></option>
-        </select>
+            </select>
+        </div>
 
-        <label>Food</label>
-        <select name ="food">
-            <option th:each="food : ${foods}"
-                    th:value="${food.id}"
-                    th:text="${food.getName()}"
-            ></option>
-        </select>
+        <div><label>Food</label></div>
+        <div>
+            <select name ="food">
+                <option th:each="food : ${foods}"
+                        th:value="${food.id}"
+                        th:text="${food.getName()}"
+                ></option>
+            </select>
+        </div>
 
+        <div><label>Shoe color</label></div>
+        <div>
+            <select name ="color">
+                <option th:each="foxColor : ${colors}"
+                        th:value="${foxColor.id}"
+                        th:text="${foxColor.getName()}"
+                ></option>
+            </select>
+        </div>
 
-        <label>Shoe color</label>
-        <select name ="color">
-            <option th:each="foxColor : ${colors}"
-                    th:value="${foxColor.id}"
-                    th:text="${foxColor.getName()}"
-            ></option>
-        </select>
-
-        <button type="submit">GO</button>
+        <div><button type="submit">GO</button></div>
     </form>
 </div>
 </body>

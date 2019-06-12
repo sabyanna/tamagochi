@@ -16,8 +16,10 @@ public class InfoController {
   public InfoController(FoxService foxService, UserService userService) {
     this.foxService = foxService;
     this.userService = userService;
+
   }
 
+  /*
 
   @GetMapping("/info")
   public String Info(Model model) {
@@ -36,6 +38,8 @@ public class InfoController {
     //model.addAttribute("isalive", foxService.findById(id).isAlive());
     return "info";
   }
+
+   */
 }
 
 
