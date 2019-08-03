@@ -60,6 +60,7 @@ public class FoxController {
     model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
     model.addAttribute("user", userService.getLoggedInUser());
     model.addAttribute("userTest", true);
+    Fox fox = foxService.findById(userService.getLoggedInUser().getCurrentFox());
     return "info";
   }
 
@@ -91,6 +92,7 @@ public class FoxController {
   public String setNutrition(long food, long drink) {
     foxService.findById(userService.getLoggedInUser().getCurrentFox()).setFood(foodService.findById(food));
     foxService.findById(userService.getLoggedInUser().getCurrentFox()).setDrink(drinkService.findById(drink));
+    foxService.save(foxService.findById(userService.getLoggedInUser().getCurrentFox()));
     return "redirect:/info";
   }
 
@@ -103,5 +105,17 @@ public class FoxController {
     model.addAttribute("trickTest",  foxService.findById(userService.getLoggedInUser().getCurrentFox()).getTricks().size() != trickService.findAll().size());
     return "learn";
   }
+
+
+  @PostMapping("/learn")
+  public String setTricks(long trick) {
+    Fox fox = foxService.findById(userService.getLoggedInUser().getCurrentFox());
+    fox.addTrick(trickService.findById(trick));
+    foxService.save(fox);
+    trickService.save(trickService.findById((trick)));
+    return "redirect:/info";
+  }
+
+
 
 }

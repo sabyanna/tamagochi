@@ -17,7 +17,7 @@ public class Fox {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
-  private int hunger;
+  private int fullness;
   private int thirst;
   private boolean isAlive;
   private String gender;
@@ -38,7 +38,7 @@ public class Fox {
   private List<Trick> tricks = new ArrayList<>();
 
   public Fox() {
-    hunger = 10;
+    fullness = 10;
     thirst = 10;
     isAlive = true;
   }
@@ -54,7 +54,7 @@ public class Fox {
     food.addFox(this);
     foxColor.addFox(this);
 
-    hunger = 10;
+    fullness = 10;
     thirst = 10;
     isAlive = true;
   }
@@ -62,11 +62,13 @@ public class Fox {
   public void addTrick(Trick trick) {
     tricks.add(trick);
     trick.addFox(this);
+    fullness -= 2;
   }
 
   public void setFood(Food food) {
     food.addFox(this);
     this.food = food;
+    fullness = 10;
   }
 
   public void setFoxColor(FoxColor foxColor) {
