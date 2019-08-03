@@ -62,24 +62,48 @@ public class TamagochiApplication implements CommandLineRunner {
     colorService.save(black);
     colorService.save(pink);
 
-    Food pali = new Food("husospalacsinta");
-    foodService.save(pali);
+    Food bread = new Food("Dry bread");
+    Food sausage = new Food("Sausage");
+    Food pizza = new Food("Pizza");
+    Food muffin = new Food("Muffin");
+    Food hamburger = new Food("Hamburger");
+    Food soup = new Food("Soup");
+    Food salad = new Food("Salad");
 
-    Drink lemonade = new Drink("lemonade");
+    foodService.save(bread);
+    foodService.save(sausage);
+    foodService.save(pizza);
+    foodService.save(muffin);
+    foodService.save(hamburger);
+    foodService.save(soup);
+    foodService.save(salad);
+
+    Drink water = new Drink("Lemonade");
+    Drink lemonade = new Drink("Lemonade");
+    Drink tea = new Drink("Tea");
+    Drink shake = new Drink("Milk shake");
+    Drink wine = new Drink("Wine");
+    Drink beer = new Drink("Beer");
+
+    drinkService.save(water);
     drinkService.save(lemonade);
+    drinkService.save(tea);
+    drinkService.save(shake);
+    drinkService.save(wine);
+    drinkService.save(beer);
 
-    Trick sleep = new Trick("sleep");
+    Trick sleep = new Trick("Sleep");
+    Trick play = new Trick("Play");
+    Trick ball = new Trick("Catch a ball");
+    Trick code = new Trick("Code");
+    Trick handstand = new Trick("Hand stand");
+    Trick cook = new Trick("Cook");
+
     trickService.save(sleep);
-
-
-/*
-    Food pali = new Food("husospalacsinta");
-    Drink lemonade = new Drink("lemonade");
-    Trick sleep = new Trick("sleep");
-    Fox fox = new Fox("anna", "She",  pali, lemonade, lime);
-    fox.addTrick(sleep);
-    foxService.save(fox);
-
- */
+    trickService.save(play);
+    trickService.save(ball);
+    trickService.save(code);
+    trickService.save(handstand);
+    trickService.save(cook);
   }
 }

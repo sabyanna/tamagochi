@@ -15,13 +15,16 @@ public class FoxController {
   private FoxColorService foxColorService;
   private FoodService foodService;
   private DrinkService drinkService;
+  private TrickService trickService;
 
-  public FoxController(UserService userService, FoxService foxService, FoxColorService foxColorService, FoodService foodService, DrinkService drinkService) {
+
+  public FoxController(UserService userService, FoxService foxService, FoxColorService foxColorService, FoodService foodService, DrinkService drinkService, TrickService trickService) {
     this.userService = userService;
     this.foxService = foxService;
     this.foxColorService = foxColorService;
     this.foodService = foodService;
     this.drinkService = drinkService;
+    this.trickService = trickService;
   }
 
   @GetMapping("/createFox")
@@ -82,6 +85,23 @@ public class FoxController {
     model.addAttribute("drinks", drinkService.findAll());
     model.addAttribute("userTest", true);
     return "nutrition";
-
   }
+
+  @PostMapping("/nutrition")
+  public String setNutrition(long food, long drink) {
+    foxService.findById(userService.getLoggedInUser().getCurrentFox()).setFood(foodService.findById(food));
+    foxService.findById(userService.getLoggedInUser().getCurrentFox()).setDrink(drinkService.findById(drink));
+    return "redirect:/info";
+  }
+
+  @GetMapping("/learn")
+  public String learnPage(Model model) {
+    model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
+    model.addAttribute("user", userService.getLoggedInUser());
+    model.addAttribute("tricks", trickService.findAll());
+    model.addAttribute("userTest", true);
+    model.addAttribute("trickTest",  foxService.findById(userService.getLoggedInUser().getCurrentFox()).getTricks().size() != trickService.findAll().size());
+    return "learn";
+  }
+
 }
