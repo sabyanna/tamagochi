@@ -17,7 +17,7 @@
         <nav>
             <ul>
                 <li th:unless="${userTest}"><a th:href="@{/createAccount}">Create Account</a></li>
-
+                <li th:if="${userTest} and ${user.getCurrentFox()} != null"><a th:href="@{/info}" th:text="${fox.name}"></a></li>
                 <li th:if="${userTest} and ${user.getCurrentFox()} != null"><a th:href="@{/nutrition}">Food</a></li>
                 <li th:if="${userTest} and ${user.getCurrentFox()} != null"><a th:href="@{/learn}">Trick Center</a></li>
                 <li th:if="${userTest} and ${user.getFoxList().size() != 0}"><a th:href="@{/userMainPage}">Your foxes</a></li>
