@@ -78,7 +78,7 @@ public class TamagochiApplication implements CommandLineRunner {
     foodService.save(soup);
     foodService.save(salad);
 
-    Drink water = new Drink("Lemonade");
+    Drink water = new Drink("Water");
     Drink lemonade = new Drink("Lemonade");
     Drink tea = new Drink("Tea");
     Drink shake = new Drink("Milk shake");

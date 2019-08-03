@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <title>FoxClub</title>
-    <link rel="stylesheet" th:href="@{/style.css}" />
+
     <link rel="icon" href="/black.png">
     <meta charset="utf-8" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet" integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 <body>
     <header>
@@ -14,32 +15,42 @@
         </div>
     </header>
 
-    <div th:object="${fox}" th:if="${fox.isAlive()}" class="box" >
-        <img th:src="'/' + ${fox.getFoxColor().getName()} + '.png'" alt="logo" class="logo">
-        <h1 th:text="'This is ' + ${fox.getName()}"></h1>
-        <h2>Hunger:</h2>
-        <p th:text="${fox.getFullness()}"></p>
-        <div class="tricks" th:if="${fox.getTricks().size() == 0}">
-            <h2>Teach them some tricks!</h2>
-        </div>
+    <div class="container">
+        <div class="row">
 
-        <div class="tricks" th:unless="${fox.getTricks().size() == 0}">
-            <h2>Tricks</h2>
-            <ul>
-                <li th:each="trick : ${fox.getTricks()}"
-                    th:text="${trick.getName()}"></li>
-            </ul>
+                <div class="col-4">
+                    <img th:src="'/' + ${fox.getFoxColor().getName()} + '.png'" alt="logo" class="logo">
+                    <h1 th:text="'This is ' + ${fox.getName()}"></h1>
+                </div>
+                <div class="col-8">
+                    <h2>Hunger:</h2>
+                    <p th:text="${fox.getFullness()}"></p>
+                    <div class="tricks" th:if="${fox.getTricks().size() == 0}">
+                        <h2>Teach them some tricks!</h2>
+                    </div>
 
+                    <div class="tricks" th:unless="${fox.getTricks().size() == 0}">
+                        <h2>Tricks</h2>
+                        <ul>
+                            <li th:each="trick : ${fox.getTricks()}"
+                                th:text="${trick.getName()}"></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+            <div th:object="${fox}" th:unless="${fox.isAlive()}" class="box">
+                <img th:src= "@{|${fox.getFoxColor().getName()}-dead.png|}" alt="logo" class="logo">
+                <h1>Your fox is dead :(</h1>
+
+            </div>
         </div>
 
     </div>
 
 
-    <div th:object="${fox}" th:unless="${fox.isAlive()}" class="box">
-        <img th:src= "@{|${fox.getFoxColor().getName()}-dead.png|}" alt="logo" class="logo">
-        <h1>Your fox is dead :(</h1>
-
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

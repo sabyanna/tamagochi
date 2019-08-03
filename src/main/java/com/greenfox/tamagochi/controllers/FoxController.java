@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class FoxController {
@@ -27,6 +28,7 @@ public class FoxController {
     this.trickService = trickService;
   }
 
+
   @GetMapping("/createFox")
   public String Create(Model model) {
     if (userService.getLoggedInUser().getCurrentFox() != null) {
@@ -38,13 +40,12 @@ public class FoxController {
     model.addAttribute("colors", foxColorService.findAll());
     model.addAttribute("foods", foodService.findAll());
     model.addAttribute("drinks", drinkService.findAll());
-    model.addAttribute("title", "Create a new fox!");
     model.addAttribute("user", userService.getLoggedInUser());
     return "createFox";
   }
 
   @PostMapping("/createFox")
-  public String Create(Model model, String name, String gender, Integer drink, Integer food, Integer color) {
+  public String Create(String name, String gender, Integer drink, Integer food, Integer color) {
     User user = userService.getLoggedInUser();
     foxService.save(new Fox(name, gender, foodService.findById(food), drinkService.findById(drink), foxColorService.findById(color)));
     foxService.findFoxByName(name).setUser(user);
