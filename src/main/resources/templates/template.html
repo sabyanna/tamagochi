@@ -6,15 +6,58 @@
     <link rel="icon" href="/black.png">
     <meta charset="utf-8"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
-
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet" integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM" crossorigin="anonymous">
 </head>
 <body>
+
+<div th:fragment="header" class="container clearfix">
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="container">
+
+            <a class="navbar-brand" href="/">FoxClub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active" th:unless="${userTest}">
+                        <a class="nav-link" th:href="@{/createAccount}">Create Account</a>
+                    </li>
+                    <li class="nav-item active" th:if="${userTest} and ${user.getCurrentFox()} != null">
+                        <a class="nav-link" th:href="@{/info}" th:text="${fox.name}"></a>
+                    </li>
+                    <li class="nav-item active" th:if="${userTest} and ${user.getCurrentFox()} != null">
+                        <a class="nav-link" th:href="@{/nutrition}">Food</a>
+                    </li>
+                    <li class="nav-item active" th:if="${userTest} and ${user.getCurrentFox()} != null">
+                        <a class="nav-link" th:href="@{/learn}">Trick Center</a>
+                    </li>
+                    <li class="nav-item active" th:if="${userTest} and ${user.getFoxList().size() != 0}">
+                        <a class="nav-link" th:href="@{/userMainPage}">Your foxes</a>
+                    </li>
+
+
+
+
+
+                </ul>
+
+                <form  th:if="${userTest}" class="form-inline my-2 my-lg-0" action="/logout" method="post">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!--
 <header>
     <div th:fragment="header" class="container clearfix">
         <a href="/">
             <img src="/greenfoxlogo.png" alt="logo" class="logo">
         </a>
-        <nav>
+        <nav >
             <ul>
                 <li th:unless="${userTest}"><a th:href="@{/createAccount}">Create Account</a></li>
                 <li th:if="${userTest} and ${user.getCurrentFox()} != null"><a th:href="@{/info}" th:text="${fox.name}"></a></li>
@@ -24,17 +67,15 @@
                 <li th:if="${userTest}"><a th:href="@{/logout}">Logout</a></li>
 
 
-                <!--
-                <li th:if="${userTest}"><a th:href="@{/createFox}">Create Fox</a></li>
-                <li th:if="${userTest} && ${userFoxTest} && ${foxTest}"><a th:href="@{/nutrition}">Food</a></li>
-                <li th:if="${userTest} && ${userFoxTest}  && ${foxTest}"><a th:href="@{/learn}">Trick Center</a></li>
-                <li th:if="${userTest} && ${userFoxTest}  && ${foxTest}"><a th:href="@{/info}" th:text="${fox.getName}" ></a></li>
--->
+
             </ul>
         </nav>
     </div>
 </header>
+ -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 </html>
-
-<!--    -->

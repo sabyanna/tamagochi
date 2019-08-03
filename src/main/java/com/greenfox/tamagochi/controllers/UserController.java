@@ -44,10 +44,8 @@ public class UserController {
     }
     model.addAttribute("userTest", true);
     model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
-    //model.addAttribute("foxName", currentFox);
-    //model.addAttribute("title", foxService.findAll().size() != 0);
-    //model.addAttribute("title", "Please log in!");
-    return "homePage";
+
+    return "redirect:/userMainPage";
   }
 
   @PostMapping("/login")
@@ -79,7 +77,7 @@ public class UserController {
     return "userMainPage";
   }
 
-  @GetMapping("/logout")
+  @PostMapping("/logout")
   public String logout() {
     userService.logout();
     return "redirect:/";
