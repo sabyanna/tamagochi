@@ -85,5 +85,15 @@ public class Fox {
     this.drink = drink;
   }
 
+  public List<Trick> possibleTricks(List<Trick> allTricks) {
+    List<Trick> outputTricks = new ArrayList<>();
+    for (Trick trick : allTricks) {
+      if (!tricks.contains(trick)) {
+        outputTricks.add(trick);
+      }
+    }
+    return outputTricks;
+  }
+
 
 }

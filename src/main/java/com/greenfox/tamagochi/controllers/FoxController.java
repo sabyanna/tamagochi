@@ -98,11 +98,12 @@ public class FoxController {
 
   @GetMapping("/learn")
   public String learnPage(Model model) {
-    model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
+    Fox fox = foxService.findById(userService.getLoggedInUser().getCurrentFox());
+    model.addAttribute("fox", fox);
     model.addAttribute("user", userService.getLoggedInUser());
-    model.addAttribute("tricks", trickService.findAll());
+    model.addAttribute("tricks", fox.possibleTricks(trickService.findAll()));
     model.addAttribute("userTest", true);
-    model.addAttribute("trickTest",  foxService.findById(userService.getLoggedInUser().getCurrentFox()).getTricks().size() != trickService.findAll().size());
+    model.addAttribute("trickTest",  fox.getTricks().size() != trickService.findAll().size());
     return "learn";
   }
 
