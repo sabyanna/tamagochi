@@ -67,6 +67,10 @@ public class UserController {
 
   @GetMapping("/userMainPage")
   public String userMainPageLoader(Model model) {
+    if (userService.getLoggedInUser().getCurrentFox() != null) {
+      model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
+
+    }
     model.addAttribute("userTest", true);
     model.addAttribute("user", userService.getLoggedInUser());
     model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxList().size() != 0);

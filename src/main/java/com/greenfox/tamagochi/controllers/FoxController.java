@@ -29,6 +29,10 @@ public class FoxController {
 
   @GetMapping("/createFox")
   public String Create(Model model) {
+    if (userService.getLoggedInUser().getCurrentFox() != null) {
+      model.addAttribute("fox", foxService.findById(userService.getLoggedInUser().getCurrentFox()));
+
+    }
     model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
     model.addAttribute("userTest", true);
     model.addAttribute("colors", foxColorService.findAll());
@@ -116,7 +120,4 @@ public class FoxController {
     trickService.save(trickService.findById((trick)));
     return "redirect:/info";
   }
-
-
-
 }

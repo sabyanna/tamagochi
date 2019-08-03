@@ -13,6 +13,7 @@
     </div>
 </header>
 <div th:object="${user}" class="box">
+
     <h1 th:text="'Welcome ' + ${user.getUsername()} + '!'"></h1>
     <h2 th:unless="${userFoxTest}" >You have no foxes yet :( create some!</h2>
     <div th:if="${userFoxTest}">
@@ -20,9 +21,9 @@
             <label>Choose your fox</label>
             <div>
                 <select name ="foxId" th:type="text">
-                    <option th:each="fox : ${userFoxes}"
-                            th:value="${fox.id}"
-                            th:text="${fox.name}">
+                    <option th:each="foxy : ${userFoxes}"
+                            th:value="${foxy.id}"
+                            th:text="${foxy.name}">
                     </option>
 
                 </select>
@@ -30,6 +31,7 @@
             </div>
         </form>
     </div>
+
     <div>
         <form action="/newFox" method="post">
             <button type="submit">Make new fox!</button>
@@ -37,6 +39,7 @@
 
     </div>
 </div>
+
 </body>
 </html>
 
