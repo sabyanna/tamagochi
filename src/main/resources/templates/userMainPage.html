@@ -13,33 +13,56 @@
     <div th:replace="template :: header" class="container clearfix" >
     </div>
 </header>
-<div th:object="${user}" class="box">
-
-    <h1 th:text="'Welcome ' + ${user.getUsername()} + '!'"></h1>
-    <h2 th:unless="${userFoxTest}" >You have no foxes yet :( create some!</h2>
-    <div th:if="${userFoxTest}">
-        <form action="/chooseFox" method="post">
-            <label>Choose your fox</label>
+<div class="container">
+    <div class="row justify-content-center">
+        <div th:object="${user}">
             <div>
-                <select name ="foxId" th:type="text">
-                    <option th:each="foxy : ${userFoxes}"
-                            th:value="${foxy.id}"
-                            th:text="${foxy.name}">
-                    </option>
-
-                </select>
-                <div><button type="submit">Choose</button></div>
+                <h1 th:text="'Welcome ' + ${user.getUsername()} + '!'"></h1>
             </div>
-        </form>
-    </div>
+            <div>
+                <div th:unless="${userFoxTest}">
+                    <h2 >You have no foxes yet :( create some!</h2>
+                    <form action="/newFox" method="post">
+                        <button class="btn btn-secondary" type="submit">Make new fox!</button>
+                    </form>
+                </div>
 
-    <div>
-        <form action="/newFox" method="post">
-            <button type="submit">Make new fox!</button>
-        </form>
+                <div th:if="${userFoxTest}">
+                    <form action="/chooseFox" method="post">
+                        <fieldset>
+                            <legend>Choose your fox</legend>
+                            <div class="form-group">
+                                <select class="form-control" name ="foxId" th:type="text">
+                                    <option th:each="foxy : ${userFoxes}"
+                                            th:value="${foxy.id}"
+                                            th:text="${foxy.name}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div>
+                                <button class="btn btn-secondary" type="submit">Choose</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <h1>or</h1>
+                    <div>
+                        <form action="/newFox" method="post">
+                            <fieldset>
+                                <button class="btn btn-info" type="submit">Create new fox!</button>
+                            </fieldset>
+                        </form>
+                    </div>
 
+
+                </div>
+            </div>
+
+
+
+        </div>
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
