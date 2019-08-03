@@ -31,7 +31,18 @@ public class UserController {
   }
 
   @PostMapping("/createAccount")
-  public String Create(User user) {
+  public String Create(User user, Model model) {
+    if ((user.getUsername().equals("") || (user.getPassword().equals("")))) {
+      model.addAttribute("message", "Please provide all fields!");
+      if (userService.getLoggedInUser() == null) {
+        model.addAttribute("userTest", false);
+        return "createAccount";
+      }
+      model.addAttribute("userTest", true);
+      model.addAttribute("userFoxTest", userService.getLoggedInUser().getFoxList().size() != 0);
+      model.addAttribute("foxTest", userService.getLoggedInUser().getCurrentFox() != null);
+      return "createAccount";
+    }
     userService.createUser(user.getUsername(), user.getPassword());
     return "redirect:/userMainPage";
   }
