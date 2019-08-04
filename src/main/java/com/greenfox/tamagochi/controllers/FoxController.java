@@ -1,5 +1,4 @@
 package com.greenfox.tamagochi.controllers;
-
 import com.greenfox.tamagochi.service.*;
 import com.greenfox.tamagochi.model.Fox;
 import com.greenfox.tamagochi.model.User;
@@ -7,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class FoxController {
@@ -53,10 +51,6 @@ public class FoxController {
     user.setCurrentFox(foxService.findFoxByName(name).getId());
     user.addFox(foxService.findFoxByName(name));
     userService.save(user);
-    //model.addAttribute("fox", foxService.findFoxByName(name));
-    //model.addAttribute("foxTest", true);
-    //model.addAttribute("userTest", true);
-    //model.addAttribute("user", userService.getLoggedInUser());
     return "redirect:/info";
   }
 
@@ -70,11 +64,8 @@ public class FoxController {
   }
 
   @PostMapping("/chooseFox")
-  public String chooseFox(long foxId, Model model) {
+  public String chooseFox(long foxId) {
     userService.getLoggedInUser().setCurrentFox(foxId);
-    //model.addAttribute("fox", foxService.findById(foxId));
-    //model.addAttribute("foxTest", true);
-    //model.addAttribute("userTest", true);
     return "redirect:/info";
   }
 

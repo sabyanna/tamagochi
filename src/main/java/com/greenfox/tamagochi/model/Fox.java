@@ -54,7 +54,7 @@ public class Fox {
     food.addFox(this);
     foxColor.addFox(this);
 
-    fullness = 10;
+    fullness = 100;
     thirst = 10;
     isAlive = true;
   }
@@ -62,7 +62,7 @@ public class Fox {
   public void addTrick(Trick trick) {
     tricks.add(trick);
     trick.addFox(this);
-    fullness -= 2;
+    fullness -= 20;
     if (fullness <= 0) {
       isAlive = false;
       //foxColor = new FoxColor(foxColor.getName().concat("-dead"));
@@ -72,7 +72,7 @@ public class Fox {
   public void setFood(Food food) {
     food.addFox(this);
     this.food = food;
-    fullness = 10;
+    fullness = 100;
   }
 
   public void setFoxColor(FoxColor foxColor) {

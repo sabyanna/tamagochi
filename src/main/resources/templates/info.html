@@ -17,22 +17,30 @@
 
     <div class="container">
         <div class="row">
+                <div class="col-1"></div>
 
-                <div class="col-4">
+                <div class="col-5" th:object="${fox}" th:if="${fox.isAlive()}">
                     <img th:src="'/' + ${fox.getFoxColor().getName()} + '.png'" alt="logo" class="logo">
-                    <h1 th:text="'This is ' + ${fox.getName()}"></h1>
+                    <h1 th:text="${fox.getName()}"></h1>
+                    <hr class="my-4">
+                    <h4 th:text="|Eating: ${fox.getFood().getName()}|"></h4>
+                    <h4 th:text="|Drinking: ${fox.getDrink().getName()}|"></h4>
                 </div>
-                <div class="col-8">
+                <div class="col-5 hunger" th:object="${fox}" th:if="${fox.isAlive()}">
                     <h2>Hunger:</h2>
-                    <p th:text="${fox.getFullness()}"></p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:style="|width: ${fox.getFullness()}%|" th:aria-valuenow="${fox.getFullness()}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+
                     <div class="tricks" th:if="${fox.getTricks().size() == 0}">
-                        <h2>Teach them some tricks!</h2>
+                        <h2>Teach it some tricks!</h2>
                     </div>
 
                     <div class="tricks" th:unless="${fox.getTricks().size() == 0}">
                         <h2>Tricks</h2>
-                        <ul>
-                            <li th:each="trick : ${fox.getTricks()}"
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" th:each="trick : ${fox.getTricks()}"
                                 th:text="${trick.getName()}"></li>
                         </ul>
 

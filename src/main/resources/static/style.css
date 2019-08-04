@@ -13,6 +13,14 @@ body {
 .btn {
     margin-top: 5px;
 }
+
+.hunger {
+    margin-top: 20px;
+}
+
+.tricks {
+    margin-top: 40px;
+}
 /*
 body {
     margin: 0;
