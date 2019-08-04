@@ -36,7 +36,8 @@
                                 <select class="form-control" name ="foxId" th:type="text">
                                     <option th:each="foxy : ${userFoxes}"
                                             th:value="${foxy.id}"
-                                            th:text="${foxy.name}">
+                                            th:text="${foxy.name}"
+                                            th:selected="${fox.getId() == foxy.getId()}">
                                     </option>
                                 </select>
                             </div>

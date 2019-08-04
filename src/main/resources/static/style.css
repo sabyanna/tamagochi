@@ -6,8 +6,9 @@ body {
     margin-bottom: 2px;
 }
 
-.label {
-    margin-top: 6px;
+label {
+    margin-top: 7px;
+    margin-bottom: 1px;
 }
 
 .btn {

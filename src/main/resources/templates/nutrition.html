@@ -14,27 +14,40 @@
     <div th:replace="template :: header" class="container clearfix" >
     </div>
 </header>
-<div class="box">
-    <h1>What should your fox eat?</h1>
-    <div>
-        <form  action="/nutrition" method="post">
-            <label for="food">Food</label>
-            <select name ="food" id="food" th:type="text">
-                <option th:each="food : ${foods}"
-                        th:value="${food.id}"
-                        th:text="${food.name}"
-                ></option>
-            </select>
+<div class="container">
 
-            <label for="drink">Drink</label>
-            <select name ="drink" id="drink" th:type="text">
-                <option th:each="drink : ${drinks}"
-                        th:value="${drink.id}"
-                        th:text="${drink.name}">
-                </option>
-            </select>
-            <button type="submit">EAT!</button>
-        </form>
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <h1>What should your fox eat and drink?</h1>
+            <form  action="/nutrition" method="post">
+                <div class="form-group">
+                    <label>Food</label>
+                </div>
+                <select class="form-control" name ="food" id="food" th:type="text">
+                    <option th:each="food : ${foods}"
+                            th:value="${food.id}"
+                            th:text="${food.name}"
+                            th:selected="${fox.food.getId() == food.getId()}">
+                        ></option>
+                </select>
+
+                <div class="form-group">
+                    <label>Drink</label>
+                </div>
+                <select class="form-control" name ="drink" id="drink" th:type="text">
+                    <option th:each="drink : ${drinks}"
+                            th:value="${drink.id}"
+                            th:text="${drink.name}"
+                            th:selected="${fox.drink.getId() == drink.getId()}">
+                    </option>
+                </select>
+                <div>
+                    <button class="btn btn-secondary" type="submit">Eat</button>
+                </div>
+            </form>
+
+        </div>
+
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
